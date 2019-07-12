@@ -1,0 +1,16 @@
+TODO:
+
+extra:
+more trainers
+more interactions (if necessary)
+graphics
+music
+save game
+let players delete their pokemon
+let players change their pokemons name
+
+bugs:
+reset battle cursor on entering a battle
+battle cursor goes back to origin position on ability use
+doesnt show uncleRicky.selectedPokemon.lastUsed in battle screen
+limit number of pokemon a person can catch
