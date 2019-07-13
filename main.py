@@ -8,6 +8,8 @@ def random_encounter(a):
         #create random pokemon
         num = random.randint(0,4)
         randomPokemon = generate_pokemon(num)
+        randomPokemon.level = uncleRicky.selectedPokemon.level
+        randomPokemon.update_stats()
         worldTrainer.pokemon.append(randomPokemon)
         worldTrainer.selectedPokemon = worldTrainer.pokemon[0]
         uncleRicky.selectedNPC = worldTrainer
@@ -16,6 +18,7 @@ def random_encounter(a):
         displayGame = False
         uncleRicky.selectedPokemon.x, uncleRicky.selectedPokemon.y = 0,300
         uncleRicky.selectedNPC.selectedPokemon.x, uncleRicky.selectedNPC.selectedPokemon.y = 500,100
+        battleCursor = [50,480]
 
 # DISPLAY VARIABLES
 displayMainMenu = True
@@ -69,6 +72,7 @@ while True:
                         else:
                             if interactionCursor == 480 or interactionCursor == 510:
                                 displayNPCInteraction = False
+                                uncleRicky.selectedNPC.npcMessageNum = 0
 
                     if uncleRicky.selectedNPC.name == "Baldy":
                         if uncleRicky.selectedNPC.npcMessageNum == 0:
@@ -133,20 +137,21 @@ while True:
                     
                     if displayFightBagMenu:
                         if battleCursor[0] == 50 and battleCursor[1] == 480:
-                            if uncleRicky.pokeballCount >= 1:
-                                if uncleRicky.selectedNPC.name == 'world':
-                                    #1/3 chance that you capture the pokemon 
-                                    x = random.randint(0,3)
-                                    if x == 0: #good job, you caught the pokemon
-                                        uncleRicky.pokemon.append(uncleRicky.selectedNPC.selectedPokemon)
-                                        worldTrainer.pokemon.remove(worldTrainer.selectedPokemon)
-                                        #worldTrainer.selectedPokemon = None
-                                        #uncleRicky.pokeballCount -= 1
-                                        displayFightBagMenu = False
-                                        displayBattleScreen = False
-                                        displayGame = True
-                                    else:
-                                        pass
+                            if len(uncleRicky.pokemon) < 5:
+                                if uncleRicky.pokeballCount >= 1:
+                                    if uncleRicky.selectedNPC.name == 'world':
+                                        #1/3 chance that you capture the pokemon 
+                                        x = random.randint(0,3)
+                                        if x == 0: #good job, you caught the pokemon
+                                            uncleRicky.pokemon.append(uncleRicky.selectedNPC.selectedPokemon)
+                                            worldTrainer.pokemon.remove(worldTrainer.selectedPokemon)
+                                            #worldTrainer.selectedPokemon = None
+                                            uncleRicky.pokeballCount -= 1
+                                            displayFightBagMenu = False
+                                            displayBattleScreen = False
+                                            displayGame = True
+                                        else:
+                                            pass
 
                         if battleCursor[0] == 50 and battleCursor[1] == 530:
                             if uncleRicky.healthPotCount >= 1:
@@ -167,7 +172,7 @@ while True:
                         uncleRicky.selectedPokemon = uncleRicky.pokemon[0]
                         uncleRicky.selectedPokemon.x, uncleRicky.selectedPokemon.y = 0,300 
 
-                    else:
+                    if displayFightMenu == False and displayFightBagMenu == False and displayFightPokemonMenu == False:
                         if battleCursor[0] == 50 and battleCursor[1] == 480:
                             if displayFightMenu == False:
                                 displayFightMenu = True
@@ -191,6 +196,7 @@ while True:
                         displayBattleScreen = True
                         displayGame = False
                         displayTrainerInteraction = False
+                        battleCursor = [50,480]
                         #set pokemon starting positions
                         uncleRicky.selectedPokemon.x, uncleRicky.selectedPokemon.y = 0,300
                         uncleRicky.selectedNPC.selectedPokemon.x, uncleRicky.selectedNPC.selectedPokemon.y = 500,100 
@@ -273,7 +279,7 @@ while True:
                     if battleCursor[0] > 50:
                         battleCursor[0] -= 300
                     else:
-                        battleCursor = 350
+                        battleCursor[0] = 350
     #MAIN MENU
     if displayMainMenu:
         screen.fill(black)
@@ -311,7 +317,7 @@ while True:
         draw_image(pic,500,200)
 
         pressed = get_input()
-        if pressed[pygame.K_SPACE] and pressed[pygame.K_LSHIFT]:
+        if pressed[pygame.K_SPACE] and (pressed[pygame.K_LSHIFT] or pressed[pygame.K_RSHIFT]):
             if pokemonSelectCursor == 200:
                 uncleRicky.pokemon.append(generate_pokemon(0))
                 uncleRicky.selectedPokemon = uncleRicky.pokemon[0]
@@ -412,6 +418,9 @@ while True:
                 uncleRicky.selectedPokemon.update_stats()
             if uncleRicky.selectedNPC.name == 'world':
                 worldTrainer.pokemon.remove(worldTrainer.selectedPokemon)
+            if uncleRicky.selectedPokemon.type == 'fire':
+                uncleRicky.selectedPokemon.fireBoi = False
+            displayFightMenu = False
             displayBattleScreen = False
             displayGame = True
 
