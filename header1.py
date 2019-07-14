@@ -19,6 +19,7 @@ interactionCursor = 480
 battleCursor = [50,480] 
 
 #OTHER VARIABLES
+playerX, playerY = 0,0
 battleAnimationSteps = [0,0]
 aiBattleAnimationSteps = [0,0]
 normalMusic = 'Sea Shanty2.ogg'
@@ -183,6 +184,39 @@ trainer1.npcMessages = [
 ]
 trainer1.npcMessageNum = 0
 
+trainer2 = trainer(2000,200,100,100)
+trainer2.sprite = load_image("./trainer2.png")
+trainer2.sprite = pygame.transform.scale(trainer2.sprite, (100,100))
+trainer2.name = "Tall Fuck"
+trainers.append(trainer2)
+npcList.append(trainer2)
+trainer2.npcMessages = [
+    "Do you want to fight me cunt?"
+]
+trainer2.npcMessageNum = 0
+
+trainer3 = trainer(500,2000,100,100)
+trainer3.sprite = load_image("./trainer3.png")
+trainer3.sprite = pygame.transform.scale(trainer3.sprite, (100,100))
+trainer3.name = "Some Nerd"
+trainers.append(trainer3)
+npcList.append(trainer3)
+trainer3.npcMessages = [
+    "Do you want to fight me cunt?"
+]
+trainer3.npcMessageNum = 0
+
+trainer4 = trainer(2000,2000,100,100)
+trainer4.sprite = load_image("./trainer4.png")
+trainer4.sprite = pygame.transform.scale(trainer4.sprite, (100,100))
+trainer4.name = "Some Thot"
+trainers.append(trainer4)
+npcList.append(trainer4)
+trainer4.npcMessages = [
+    "Do you want to fight me cunt?"
+]
+trainer4.npcMessageNum = 0
+
 #POKEMON
 def generate_pokemon(x):
     if x == 0:
@@ -253,3 +287,18 @@ trainer1.pokemon.append(generate_pokemon(1))
 trainer1.selectedPokemon = trainer1.pokemon[0]
 trainer1.selectedPokemon.level = 25
 trainer1.selectedPokemon.update_stats()
+
+trainer2.pokemon.append(generate_pokemon(2))
+trainer2.selectedPokemon = trainer2.pokemon[0]
+trainer2.selectedPokemon.level = 25
+trainer2.selectedPokemon.update_stats()
+
+trainer3.pokemon.append(generate_pokemon(3))
+trainer3.selectedPokemon = trainer3.pokemon[0]
+trainer3.selectedPokemon.level = 25
+trainer3.selectedPokemon.update_stats()
+
+trainer4.pokemon.append(generate_pokemon(4))
+trainer4.selectedPokemon = trainer4.pokemon[0]
+trainer4.selectedPokemon.level = 25
+trainer4.selectedPokemon.update_stats()

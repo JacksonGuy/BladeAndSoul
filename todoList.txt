@@ -1,13 +1,12 @@
 TODO:
-music
-more trainers
+view pokemon menu
+change pokemons names
+delete pokemon
 
 extra:
 more interactions (if necessary)
 graphics
 save game
-let players delete their pokemon
-let players change their pokemons name
 put all images in a seperate folder
 
 ?? Can I make an automatic updater (cx_freeze the setup script, grab files from github) ??

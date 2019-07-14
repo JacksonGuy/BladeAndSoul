@@ -1,8 +1,6 @@
 from header1 import *
 
 pygame.mixer.init()
-pygame.mixer.music.load(normalMusic)
-pygame.mixer.music.play(-1)
 
 def random_encounter(a):
     global displayBattleScreen
@@ -23,6 +21,8 @@ def random_encounter(a):
         uncleRicky.selectedPokemon.x, uncleRicky.selectedPokemon.y = 0,300
         uncleRicky.selectedNPC.selectedPokemon.x, uncleRicky.selectedNPC.selectedPokemon.y = 500,100
         battleCursor = [50,480]
+        pygame.mixer.music.load(battleMusic)
+        pygame.mixer.music.play(-1)
 
 # DISPLAY VARIABLES
 displayMainMenu = True
@@ -60,7 +60,7 @@ while True:
                     if mainMenuCursor == 200:
                         displayPokemonSelect = True
                         displayMainMenu = False
-                    
+                        
                 if displayNPCInteraction:
                     if uncleRicky.selectedNPC.name == "Daddy":
                         if uncleRicky.selectedNPC.npcMessageNum == 0:
@@ -146,7 +146,9 @@ while True:
                             displayFightMenu = False
                             displayBattleScreen = False
                             displayGame = True
-                    
+                            pygame.mixer.music.load(normalMusic)
+                            pygame.mixer.music.play(-1)
+
                     if displayFightBagMenu:
                         if battleCursor[0] == 50 and battleCursor[1] == 480:
                             if len(uncleRicky.pokemon) < 5:
@@ -162,6 +164,8 @@ while True:
                                             displayFightBagMenu = False
                                             displayBattleScreen = False
                                             displayGame = True
+                                            pygame.mixer.music.load(normalMusic)
+                                            pygame.mixer.music.play(-1)
                                         else:
                                             pass
 
@@ -198,6 +202,8 @@ while True:
                         if battleCursor[0] == 350 and battleCursor[1] == 530:
                             displayBattleScreen = False
                             displayGame = True
+                            pygame.mixer.music.load(normalMusic)
+                            pygame.mixer.music.play(-1)
                             if uncleRicky.selectedNPC.name == 'world':
                                 worldTrainer.pokemon.remove(worldTrainer.selectedPokemon)
                                 #worldTrainer.selectedPokemon = None
@@ -213,6 +219,8 @@ while True:
                         #set pokemon starting positions
                         uncleRicky.selectedPokemon.x, uncleRicky.selectedPokemon.y = 0,300
                         uncleRicky.selectedNPC.selectedPokemon.x, uncleRicky.selectedNPC.selectedPokemon.y = 500,100 
+                        pygame.mixer.music.load(battleMusic)
+                        pygame.mixer.music.play(-1)
                     else:
                         displayTrainerInteraction = False
                     
@@ -343,13 +351,13 @@ while True:
             
             displayPokemonSelect = False
             displayGame = True
+            pygame.mixer.music.load(normalMusic)
+            pygame.mixer.music.play(-1)
 
         pygame.display.update()
 
     #POKEMON BATTLE
     if displayBattleScreen:
-        pygame.mixer.music.load(battleMusic)
-        pygame.mixer.music.play(-1)
         screen.fill(black)
         #draw pokemon
         uncleRicky.selectedPokemon.draw_self()
@@ -451,6 +459,8 @@ while True:
             displayFightMenu = False
             displayBattleScreen = False
             displayGame = True
+            pygame.mixer.music.load(normalMusic)
+            pygame.mixer.music.play(-1)
 
         pressed = get_input()
 
@@ -480,31 +490,36 @@ while True:
             if pressed[pygame.K_w]:
                 for thing in npcList:
                     thing.y += SPEEDCONSTANT
+                playerY -= SPEEDCONSTANT
                 random_encounter(5000)
             if pressed[pygame.K_s]:
                 for thing in npcList:
                     thing.y -= SPEEDCONSTANT
+                playerY += SPEEDCONSTANT
                 random_encounter(5000)
             if pressed[pygame.K_a]:
                 for thing in npcList:
                     thing.x += SPEEDCONSTANT
+                playerX -= SPEEDCONSTANT
                 random_encounter(5000)
             if pressed[pygame.K_d]:
                 for thing in npcList:
                     thing.x -= SPEEDCONSTANT
+                playerX += SPEEDCONSTANT
                 random_encounter(5000)
 
             if pressed[pygame.K_f] and pressed[pygame.K_LSHIFT]:
                 random_encounter(0)
 
         screen.fill(black)
-        #DRAW TRAINERS 
+        #DRAW NPCS
         healerBoi.draw_self()
         shopBoi.draw_self()
         uncleRicky.draw_self()
-        #uncleRicky.draw_selected_pokemon()
         trainer1.draw_self()
-        #trainer1.draw_selected_pokemon()
+        trainer2.draw_self()
+        trainer3.draw_self()
+        trainer4.draw_self()
         
         #NPC INTERACTION
         if displayTrainerInteraction:
@@ -546,5 +561,8 @@ while True:
             draw_text("$" + str(uncleRicky.money),600,10,white,normalFont)
             draw_text("Pokeballs: " + str(uncleRicky.pokeballCount), 600,30,white,normalFont)
             draw_text("Health Potions: " + str(uncleRicky.healthPotCount),600,50,white,normalFont)
+
+        #draw player coordinates
+        draw_text(str(playerX) + "," + str(playerY),700,580,white,normalFont)
 
         pygame.display.update()
