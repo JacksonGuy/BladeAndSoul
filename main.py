@@ -109,15 +109,21 @@ while True:
                                 if battleCursor[0] == 50 and battleCursor[1] == 480:
                                     uncleRicky.selectedPokemon.abilities[0](uncleRicky.selectedPokemon, uncleRicky.selectedNPC.selectedPokemon)
                                     assign_lastUsed(uncleRicky.selectedPokemon,0)
+                                
                                 if battleCursor[0] == 50 and battleCursor[1] == 530:
                                     uncleRicky.selectedPokemon.abilities[1](uncleRicky.selectedPokemon, uncleRicky.selectedNPC.selectedPokemon)
                                     assign_lastUsed(uncleRicky.selectedPokemon,1)
+                                
                                 if battleCursor[0] == 350 and battleCursor[1] == 480:
                                     uncleRicky.selectedPokemon.abilities[2](uncleRicky.selectedPokemon, uncleRicky.selectedNPC.selectedPokemon)
                                     assign_lastUsed(uncleRicky.selectedPokemon,2)
+                                
                                 if battleCursor[0] == 350 and battleCursor[1] == 530:
                                     uncleRicky.selectedPokemon.abilities[3](uncleRicky.selectedPokemon, uncleRicky.selectedNPC.selectedPokemon)
                                     assign_lastUsed(uncleRicky.selectedPokemon,3)
+
+                                battleAnimationSteps[0] = 1
+
                                 uncleRicky.selectedNPC.selectedPokemon.lastUsed = None
                             
                             #apply/update poison
@@ -129,7 +135,9 @@ while True:
                             
                             if uncleRicky.selectedPokemon.sleep == True:
                                 uncleRicky.selectedPokemon.sleep = False
+                        
                             ai_action(uncleRicky.selectedNPC.selectedPokemon,uncleRicky.selectedPokemon)
+                        
                         else:
                             displayFightMenu = False
                             displayBattleScreen = False
@@ -197,6 +205,7 @@ while True:
                         displayGame = False
                         displayTrainerInteraction = False
                         battleCursor = [50,480]
+                        battleAnimationSteps = [0,0]
                         #set pokemon starting positions
                         uncleRicky.selectedPokemon.x, uncleRicky.selectedPokemon.y = 0,300
                         uncleRicky.selectedNPC.selectedPokemon.x, uncleRicky.selectedNPC.selectedPokemon.y = 500,100 
@@ -355,6 +364,7 @@ while True:
                 draw_text("Self Immolate",100,530,black,battleFont)
                 draw_text("Fire Boi",400,480,black,battleFont)
                 draw_text("Stolen Ability",400,530,black,battleFont)
+            
             if uncleRicky.selectedPokemon.type == 'water':
                 draw_text("Drink Water",100,480,black,battleFont)
                 draw_text("Squirt",100,530,black,battleFont)
@@ -402,6 +412,18 @@ while True:
             draw_text(str(uncleRicky.selectedPokemon.name) + " used " + uncleRicky.selectedPokemon.lastUsed,50,430,white,normalFont)
         if uncleRicky.selectedPokemon.lastUsed == None and uncleRicky.selectedNPC.selectedPokemon.lastUsed != None:
             draw_text(str(uncleRicky.selectedNPC.selectedPokemon.name) + " used " + uncleRicky.selectedNPC.selectedPokemon.lastUsed,50,430,white,normalFont)
+            #do ai animation
+            if battleAnimationSteps[0] == 0 and battleAnimationSteps[1] == 0:
+                if aiBattleAnimationSteps[0] == 1 and aiBattleAnimationSteps[1] == 0:
+                    move(uncleRicky.selectedNPC.selectedPokemon,20,280)
+                if aiBattleAnimationSteps[1] == 1 and aiBattleAnimationSteps[0] == 0:
+                    move(uncleRicky.selectedNPC.selectedPokemon,500,100)
+                if uncleRicky.selectedNPC.selectedPokemon.x < 30 and uncleRicky.selectedNPC.selectedPokemon.y > 270:
+                    aiBattleAnimationSteps[1] = 1
+                    aiBattleAnimationSteps[0] = 0
+                if uncleRicky.selectedNPC.selectedPokemon.x > 480 and uncleRicky.selectedNPC.selectedPokemon.y > 80 and aiBattleAnimationSteps[1] == 1:
+                    aiBattleAnimationSteps[0], aiBattleAnimationSteps[1] = 0,0
+        
         else:
             draw_text("",50,430,white,normalFont)
 
@@ -424,6 +446,19 @@ while True:
             displayBattleScreen = False
             displayGame = True
 
+        pressed = get_input()
+
+        #player animation
+        if battleAnimationSteps[0] == 1 and battleAnimationSteps[1] == 0:
+            move(uncleRicky.selectedPokemon,450,80)
+        if battleAnimationSteps[1] == 1 and battleAnimationSteps[0] == 0:
+            move(uncleRicky.selectedPokemon,0,300)
+        if uncleRicky.selectedPokemon.x > 440 and uncleRicky.selectedPokemon.y > 75:
+            battleAnimationSteps[1] = 1
+            battleAnimationSteps[0] = 0
+        if uncleRicky.selectedPokemon.x < 10 and uncleRicky.selectedPokemon.y > 280 and battleAnimationSteps[1] == 1:
+            battleAnimationSteps[0], battleAnimationSteps[1] = 0,0
+        
         pygame.display.update()
     
     #DISPLAY GAME

@@ -1,5 +1,4 @@
 TODO:
-animation
 music
 more trainers
 
@@ -10,6 +9,8 @@ save game
 let players delete their pokemon
 let players change their pokemons name
 put all images in a seperate folder
+
+?? Can I make an automatic updater (cx_freeze the setup script, grab files from github) ??
 
 bugs:
 doesnt show uncleRicky.selectedPokemon.lastUsed in battle screen

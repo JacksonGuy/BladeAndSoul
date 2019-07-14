@@ -1,5 +1,6 @@
 from chaos import *
 from abilities import *
+import threading
 pygame.font.init()
 clock = pygame.time.Clock()
 
@@ -17,12 +18,17 @@ pokemonSelectCursor = 200
 interactionCursor = 480
 battleCursor = [50,480] 
 
+#OTHER VARIABLES
+battleAnimationSteps = [0,0]
+aiBattleAnimationSteps = [0,0]
+
 class pokemon():
     def __init__(self,width,height):
         self.width, self.height = width,height
         self.x, self.y = 0,0
         self.rect = pygame.Rect(self.x,self.y,self.width,self.height)
         self.sprite = None
+        self.speed = 3
         self.name = None
 
         self.pokeType = None
@@ -96,12 +102,14 @@ class item():
 #OTHER FUNCTIONS
 
 def ai_action(user,target):
-    time.sleep(3)
+    #aiBattleAnimationSteps = [0,0]
     if user.sleep == False:
         x = random.randint(0,len(user.abilities)-1)
         user.abilities[x](user,target)
         assign_lastUsed(user,x)
         uncleRicky.selectedPokemon.lastUsed = None
+        aiBattleAnimationSteps[0] = 1
+
     #apply/update poison
     if user.poison[0] == True:
         user.health -= user.poison[1].damage * 0.25
