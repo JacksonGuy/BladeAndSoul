@@ -21,6 +21,8 @@ battleCursor = [50,480]
 #OTHER VARIABLES
 battleAnimationSteps = [0,0]
 aiBattleAnimationSteps = [0,0]
+normalMusic = 'Sea Shanty2.ogg'
+battleMusic = 'Halogen - U Got That-9W6AN_eQeZo.ogg'
 
 class pokemon():
     def __init__(self,width,height):

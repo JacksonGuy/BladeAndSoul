@@ -1,5 +1,9 @@
 from header1 import *
 
+pygame.mixer.init()
+pygame.mixer.music.load(normalMusic)
+pygame.mixer.music.play(-1)
+
 def random_encounter(a):
     global displayBattleScreen
     global displayGame
@@ -344,6 +348,8 @@ while True:
 
     #POKEMON BATTLE
     if displayBattleScreen:
+        pygame.mixer.music.load(battleMusic)
+        pygame.mixer.music.play(-1)
         screen.fill(black)
         #draw pokemon
         uncleRicky.selectedPokemon.draw_self()
