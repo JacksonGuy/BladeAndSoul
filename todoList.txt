@@ -1,15 +1,17 @@
 TODO:
+volume control
 view pokemon menu
 change pokemons names
 delete pokemon
+graphics
+if another pokemon is available, switch to that pokemon on selectedPokemon death
 
 extra:
-more interactions (if necessary)
-graphics
 save game
-put all images in a seperate folder
+story
 
 ?? Can I make an automatic updater (cx_freeze the setup script, grab files from github) ??
+?? does windows have git pre installed ??
 
 bugs:
-doesnt show uncleRicky.selectedPokemon.lastUsed in battle screen
+doesnt show uncleRicky.selectedPokemon.lastUsed in battle screen (it equals none for some reason)

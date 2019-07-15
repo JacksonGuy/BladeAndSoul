@@ -22,8 +22,8 @@ battleCursor = [50,480]
 playerX, playerY = 0,0
 battleAnimationSteps = [0,0]
 aiBattleAnimationSteps = [0,0]
-normalMusic = 'Sea Shanty2.ogg'
-battleMusic = 'Halogen - U Got That-9W6AN_eQeZo.ogg'
+normalMusic = './sounds/music/Sea Shanty2.ogg'
+battleMusic = './sounds/music/Halogen - U Got That-9W6AN_eQeZo.ogg'
 
 class pokemon():
     def __init__(self,width,height):
@@ -165,7 +165,7 @@ def assign_lastUsed(p,n):
 
 #TRAINERS
 uncleRicky = trainer(W_width/2,W_height/2,100,100)
-uncleRicky.sprite = load_image("./uncleRicky.png")
+uncleRicky.sprite = load_image("./images/uncleRicky.png")
 uncleRicky.sprite = pygame.transform.scale(uncleRicky.sprite, (100,100))
 uncleRicky.name = "Uncle Ricky"
 uncleRicky.selectedNPC = None
@@ -174,7 +174,7 @@ worldTrainer = trainer(0,0,0,0)
 worldTrainer.name = "world"
 
 trainer1 = trainer(500,200,100,100)
-trainer1.sprite = load_image("./trainer1.png")
+trainer1.sprite = load_image("./images/trainer1.png")
 trainer1.sprite = pygame.transform.scale(trainer1.sprite, (100,100))
 trainer1.name = "Some Bitch"
 trainers.append(trainer1)
@@ -185,7 +185,7 @@ trainer1.npcMessages = [
 trainer1.npcMessageNum = 0
 
 trainer2 = trainer(2000,200,100,100)
-trainer2.sprite = load_image("./trainer2.png")
+trainer2.sprite = load_image("./images/trainer2.png")
 trainer2.sprite = pygame.transform.scale(trainer2.sprite, (100,100))
 trainer2.name = "Tall Fuck"
 trainers.append(trainer2)
@@ -196,7 +196,7 @@ trainer2.npcMessages = [
 trainer2.npcMessageNum = 0
 
 trainer3 = trainer(500,2000,100,100)
-trainer3.sprite = load_image("./trainer3.png")
+trainer3.sprite = load_image("./images/trainer3.png")
 trainer3.sprite = pygame.transform.scale(trainer3.sprite, (100,100))
 trainer3.name = "Some Nerd"
 trainers.append(trainer3)
@@ -207,7 +207,7 @@ trainer3.npcMessages = [
 trainer3.npcMessageNum = 0
 
 trainer4 = trainer(2000,2000,100,100)
-trainer4.sprite = load_image("./trainer4.png")
+trainer4.sprite = load_image("./images/trainer4.png")
 trainer4.sprite = pygame.transform.scale(trainer4.sprite, (100,100))
 trainer4.name = "Some Thot"
 trainers.append(trainer4)
@@ -221,7 +221,7 @@ trainer4.npcMessageNum = 0
 def generate_pokemon(x):
     if x == 0:
         hotpi = pokemon(50,50)
-        hotpi.sprite = load_image("./hotpi.png")
+        hotpi.sprite = load_image("./images/hotpi.png")
         hotpi.sprite = pygame.transform.scale(hotpi.sprite, (100,100))
         hotpi.name = "Hotpi"
         hotpi.type = 'fire'
@@ -229,7 +229,7 @@ def generate_pokemon(x):
         return(hotpi)
     if x == 1:
         peanis = pokemon(50,50)
-        peanis.sprite = load_image("./peanis.png")
+        peanis.sprite = load_image("./images/peanis.png")
         peanis.sprite = pygame.transform.scale(peanis.sprite, (100,100))
         peanis.name = "Peanis"
         peanis.type = 'water'
@@ -237,7 +237,7 @@ def generate_pokemon(x):
         return(peanis)
     if x == 2:
         flampod = pokemon(50,50)
-        flampod.sprite = load_image("./Flampod.PNG")
+        flampod.sprite = load_image("./images/Flampod.PNG")
         flampod.sprite = pygame.transform.scale(flampod.sprite, (100,100))
         flampod.name = "Flampod"
         flampod.type = 'air'
@@ -245,7 +245,7 @@ def generate_pokemon(x):
         return(flampod)
     if x == 3:
         pourpiss = pokemon(50,50)
-        pourpiss.sprite = load_image("./pourpiss.png")
+        pourpiss.sprite = load_image("./images/pourpiss.png")
         pourpiss.sprite = pygame.transform.scale(pourpiss.sprite, (100,100))
         pourpiss.name = "Pourpiss"
         pourpiss.type = 'fire'
@@ -253,7 +253,7 @@ def generate_pokemon(x):
         return(pourpiss)
     if x == 4:
         thorbon = pokemon(50,50)
-        thorbon.sprite = load_image("./thorbon.png")
+        thorbon.sprite = load_image("./images/thorbon.png")
         thorbon.sprite = pygame.transform.scale(thorbon.sprite,(100,100))
         thorbon.name = "Thorbon"
         thorbon.type = 'earth'
@@ -262,7 +262,7 @@ def generate_pokemon(x):
 
 #OTHER
 healerBoi = Object(400,50,50,50)
-healerBoi.sprite = load_image("./healerBoi.png")
+healerBoi.sprite = load_image("./images/healerBoi.png")
 healerBoi.sprite = pygame.transform.scale(healerBoi.sprite,(50,50))
 healerBoi.name = "Daddy"
 npcList.append(healerBoi)
@@ -273,7 +273,7 @@ healerBoi.npcMessages = [
 healerBoi.npcMessageNum = 0
 
 shopBoi = Object(800,50,50,50)
-shopBoi.sprite = load_image("./shopBoi.png")
+shopBoi.sprite = load_image("./images/shopBoi.png")
 shopBoi.sprite = pygame.transform.scale(shopBoi.sprite,(50,50))
 shopBoi.name = "Baldy"
 npcList.append(shopBoi)

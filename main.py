@@ -84,7 +84,7 @@ while True:
                                 if uncleRicky.money >= 10:
                                     #create pokeball object
                                     ball = item(10,"Pokeball")
-                                    ball.sprite = load_image("./pokeball.png")
+                                    ball.sprite = load_image("./images/pokeball.png")
                                     ball.sprite = pygame.transform.scale(ball.sprite,(30,30))
 
                                     #add pokeball to player inventory
@@ -97,7 +97,7 @@ while True:
                                 if uncleRicky.money >= 10:
                                     #create potion item
                                     hpPot = item(10,"Health Potion")
-                                    hpPot.sprite = load_image("./healthPot.png")
+                                    hpPot.sprite = load_image("./images/healthPot.png")
                                     hpPot.sprite = pygame.transform.scale(ball.sprite,(30,30))
 
                                     #add health potion to player inventory
@@ -307,7 +307,7 @@ while True:
         draw_rect(10,mainMenuCursor,20,20,orange)
         draw_text("Pokemon Blade and Soul",30,100,white,main_menu_titleFont)
         draw_text("Play",50,200,white,normalFont)
-        mainMenuPic = load_image("./uncleRicky.png")
+        mainMenuPic = load_image("./images/uncleRicky.png")
         mainMenuPic = pygame.transform.scale(mainMenuPic, (400,300))
         draw_image(mainMenuPic,300,200)
         pygame.display.update()
@@ -325,13 +325,13 @@ while True:
         
         #load pictures
         if pokemonSelectCursor == 200:
-            pic = load_image("./hotpi.png")
+            pic = load_image("./images/hotpi.png")
             pic = pygame.transform.scale(pic, (150,150))
         if pokemonSelectCursor == 300:
-            pic = load_image("./peanis.png")
+            pic = load_image("./images/peanis.png")
             pic = pygame.transform.scale(pic, (150,150))
         if pokemonSelectCursor == 400:
-            pic = load_image("./Flampod.PNG")
+            pic = load_image("./images/Flampod.PNG")
             pic = pygame.transform.scale(pic, (150,150))
 
         #draw picture
