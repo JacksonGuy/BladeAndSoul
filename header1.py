@@ -261,6 +261,9 @@ def generate_pokemon(x):
         return(thorbon)
 
 #OTHER
+background = load_image("./images/grassBackground.png")
+background = pygame.transform.scale(background,(800,600))
+
 healerBoi = Object(400,50,50,50)
 healerBoi.sprite = load_image("./images/healerBoi.png")
 healerBoi.sprite = pygame.transform.scale(healerBoi.sprite,(50,50))

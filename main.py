@@ -43,6 +43,13 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
         if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_F3:
+                if (pygame.mixer.music.get_volume() > 0):
+                    pygame.mixer.music.set_volume(pygame.mixer.music.get_volume() - 0.1)
+            if event.key == pygame.K_F4:
+                if (pygame.mixer.music.get_volume() < 1):
+                    pygame.mixer.music.set_volume(pygame.mixer.music.get_volume() + 0.1)
+
             if event.key == pygame.K_p:
                 if displayPokemonStats == False:
                     displayPokemonStats = True

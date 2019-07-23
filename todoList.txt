@@ -1,9 +1,7 @@
 TODO:
-volume control
-view pokemon menu
-change pokemons names
-delete pokemon
-graphics
+pokemon menu
+    - change pokemons names
+    - delete pokemon
 if another pokemon is available, switch to that pokemon on selectedPokemon death
 
 extra:
